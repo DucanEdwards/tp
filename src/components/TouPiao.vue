@@ -55,7 +55,7 @@
 
 <script>
 import { LikeOutlined } from '@ant-design/icons-vue';
-import {defineComponent, ref, reactive, resolveDirective} from 'vue';
+import {defineComponent, ref, reactive} from 'vue';
 import {onMounted} from "vue";
 import axios from "axios";
 import { message } from 'ant-design-vue';

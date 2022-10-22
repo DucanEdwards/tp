@@ -1,5 +1,4 @@
 import { createApp } from 'vue'
-import Antd from 'ant-design-vue';
 import 'ant-design-vue/dist/antd.css';
 import './style.css'
 import App from './App.vue'
@@ -12,4 +11,4 @@ app.config.globalProperties.axios=axios
 
 app.use(router)
 
-app.use(Antd).mount('#app');
+app.mount('#app');

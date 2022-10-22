@@ -1,11 +1,16 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import commpressPlugin from 'vite-plugin-compression'
+import Components from 'unplugin-vue-components/vite'
+import { AntDesignVueResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [
       vue(),
+      Components({
+        resolvers: [AntDesignVueResolver()]
+      }),
       commpressPlugin({
         verbose: true, // 默认即可
         disable: false, //开启压缩(不禁用)，默认即可
