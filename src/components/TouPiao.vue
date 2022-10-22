@@ -56,7 +56,6 @@
 <script>
 import { LikeOutlined } from '@ant-design/icons-vue';
 import {defineComponent, ref, reactive, resolveDirective} from 'vue';
-import BScroll from 'better-scroll'
 import {onMounted} from "vue";
 import axios from "axios";
 import { message } from 'ant-design-vue';
