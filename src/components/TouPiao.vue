@@ -127,14 +127,12 @@ export default defineComponent({
             const data = res.data;
             voteList.value=[]
             if(data=='ok'){
-              message.success('投票成功,感谢参与！',onclose=()=>{
-                // location.reload()
-                router.push('/success')
-              });
+              router.push('/success')
             }else{
-              message.error('抱歉,无法重复投票！',onclose=()=>{
-                location.reload()
-              });
+              // message.error('抱歉,无法重复投票！',onclose=()=>{
+              //   location.reload()
+              // });
+              router.push('/repeat-vote')
             }
           })
     }
