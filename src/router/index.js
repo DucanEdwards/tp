@@ -1,8 +1,10 @@
 import TouPiao from "../components/TouPiao.vue";
+import Success from "../components/Success.vue";
 import { createRouter,createWebHashHistory} from "vue-router";
 
 const routes = [
-    { path: '/toupiao', component: TouPiao }
+    { path: '/', component: TouPiao },
+    { path: '/success',component: Success}
 ]
 
 const router = createRouter({

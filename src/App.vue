@@ -15,7 +15,14 @@ import TouPiao from './components/TouPiao.vue'
 <!--    </a>-->
 <!--  </div>-->
 <!--  <HelloWorld msg="Vite + Vue" />-->
-  <TouPiao />
+<!--  <TouPiao />-->
+
+<!--  <div class="route">-->
+<!--    <router-link to="/">Go to Home</router-link>-->
+<!--    <router-link to="/success">Go to Success</router-link>-->
+<!--  </div>-->
+  <router-view></router-view>
+
 </template>
 
 <style scoped>
@@ -29,5 +36,15 @@ import TouPiao from './components/TouPiao.vue'
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+.route{
+  z-index: 1000;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
 }
 </style>

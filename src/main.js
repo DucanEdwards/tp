@@ -10,4 +10,6 @@ const app=createApp(App)
 
 app.config.globalProperties.axios=axios
 
-app.use(Antd).use(router).mount('#app');
+app.use(router)
+
+app.use(Antd).mount('#app');

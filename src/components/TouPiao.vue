@@ -21,6 +21,9 @@
             <video style="opacity:0.99;width:100%; height:100%; object-fit: fill"
                 controls
                    preload="auto"
+                   @play="playVideo(video.videoId)"
+                   :ref="video+video.videoId"
+                   :class="'video'+video.videoId"
             >
               <source :src="video.url"  type="video/mp4"/>
             </video>
@@ -51,11 +54,12 @@
 
 <script>
 import { LikeOutlined } from '@ant-design/icons-vue';
-import {defineComponent, ref,reactive} from 'vue';
+import {defineComponent, ref, reactive, resolveDirective} from 'vue';
 import BScroll from 'better-scroll'
 import {onMounted} from "vue";
 import axios from "axios";
 import { message } from 'ant-design-vue';
+import {useRouter} from 'vue-router'
 
 export default defineComponent({
   name: "toupiao",
@@ -69,6 +73,9 @@ export default defineComponent({
     const scroll=ref({})
     const voteList=ref([])
     let selected=ref(0)
+    let playingId=ref(0)
+
+    const router = useRouter()
 
     const query = () => {
       axios.get('/api/vote/queryAll')
@@ -97,6 +104,8 @@ export default defineComponent({
       selected.value=0
     }
 
+    let v=this
+
     const postVote=()=>{
       for(let i=1;i<=71;i++){
         if (checked[i].value){
@@ -119,7 +128,8 @@ export default defineComponent({
             voteList.value=[]
             if(data=='ok'){
               message.success('投票成功,感谢参与！',onclose=()=>{
-                location.reload()
+                // location.reload()
+                router.push('/success')
               });
             }else{
               message.error('抱歉,无法重复投票！',onclose=()=>{
@@ -127,6 +137,16 @@ export default defineComponent({
               });
             }
           })
+    }
+
+    const playVideo=(id)=>{
+      if (playingId.value!=0){
+        let video=document.querySelector(".video"+playingId.value);
+        // let videoToPlay=document.querySelector(".")
+        // this.$refs["video"+id].pause();
+        video.pause();
+      }
+      playingId.value=id
     }
 
     onMounted(() => {
@@ -141,10 +161,12 @@ export default defineComponent({
       chooseVote,
       postVote,
       clearChoose,
+      playVideo,
 
       videos,
       voteList,
-      selected
+      selected,
+      playingId
     };
   },
 })
@@ -166,7 +188,13 @@ export default defineComponent({
 
 .wrapper{
   height: 100vh;
-  width: 100vw;
-  margin: auto;
+  width: 90vw;
+  /*margin: 0 auto;*/
+  position: absolute;
+  left: 50%;
+  -moz-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
 }
 </style>
