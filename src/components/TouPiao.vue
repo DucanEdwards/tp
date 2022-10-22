@@ -67,11 +67,13 @@ export default defineComponent({
     LikeOutlined,
   },
   setup() {
+    // 保存每个案例是否被选择
     const checked = reactive([])
-    // const state = reactive([ref(false)])
+    // 保存获取到的video数据
     const videos=ref([]);
-    const scroll=ref({})
+    // 保存最终被投票案例的id
     const voteList=ref([])
+    // 保存几个案例被选择
     let selected=ref(0)
     let playingId=ref(0)
 
@@ -104,8 +106,6 @@ export default defineComponent({
       selected.value=0
     }
 
-    let v=this
-
     const postVote=()=>{
       for(let i=1;i<=71;i++){
         if (checked[i].value){
@@ -118,6 +118,8 @@ export default defineComponent({
         message.warning('请选择要投票的作品');
         return
       }else if(votes.length<5 || votes.length>15){
+        // 必须清空，避免有重复id
+        voteList.value=[]
         message.warning('请选择5-15个作品进行投票');
         return;
       }
