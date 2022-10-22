@@ -20,7 +20,7 @@
           <a-card :title="video.description" :bordered="false">
             <video style="opacity:0.99;width:100%; height:100%; object-fit: fill"
                 controls
-                   preload="auto"
+                   preload="none"
                    :poster="`https://ecnueducation.oss-cn-shanghai.aliyuncs.com/test/images/${video.videoId}.jpg`"
                    @play="playVideo(video.videoId)"
                    :ref="video+video.videoId"
