@@ -144,9 +144,14 @@ export default defineComponent({
         let video=document.querySelector(".video"+playingId.value);
         // let videoToPlay=document.querySelector(".")
         // this.$refs["video"+id].pause();
-        video.pause();
+        if(id==playingId.value){
+          playingId.value=0;
+        }else {
+          video.pause();
+        }
       }
       playingId.value=id
+      console.log(playingId.value)
     }
 
     onMounted(() => {
