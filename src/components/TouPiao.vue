@@ -43,13 +43,15 @@
     </div>
 
     <div :style="{ background: 'rgb(190, 200, 200)', padding: '26px 16px 16px' }">
-      <div style="margin-bottom: 10px"><a-tag color="#f50">请选择5-15项 已选择{{selected}}项</a-tag></div>
+      <div style="margin-bottom: 10px"><a-tag color="#4d9ef1">请选择5-15项 已选择{{selected}}项</a-tag></div>
       <a-button type="primary" ghost @click="clearChoose">清空选择</a-button>
     </div>
 
     <div :style="{ background: 'rgb(190, 200, 200)', padding: '10px 16px 16px' }">
       <a-button type="primary" ghost @click="postVote">提交投票结果</a-button>
+      <div style="margin-top: 10px"><a-tag color="#4d9ef1">投票有效期：2022年10月25日-28日 每日可投一次</a-tag></div>
     </div>
+
   </div>
 </template>
 
@@ -107,6 +109,12 @@ export default defineComponent({
     }
 
     const postVote=()=>{
+      let curTime=new Date();
+      if (curTime>new Date('2022-10-29 00:00:00')){
+        router.push('/timeout')
+        return;
+      }
+
       for(let i=1;i<=71;i++){
         if (checked[i].value){
           voteList.value.push(i);

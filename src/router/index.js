@@ -1,12 +1,14 @@
 import TouPiao from "../components/TouPiao.vue";
 import Success from "../components/Success.vue";
 import RepeatVote from "../components/RepeatVote.vue";
+import TimeOut from "../components/TimeOut.vue"
 import { createRouter,createWebHashHistory} from "vue-router";
 
 const routes = [
     { path: '/', component: TouPiao },
     { path: '/success',component: Success},
-    { path: '/repeat-vote',component: RepeatVote}
+    { path: '/repeat-vote',component: RepeatVote},
+    { path:'/timeout',component: TimeOut}
 ]
 
 const router = createRouter({
