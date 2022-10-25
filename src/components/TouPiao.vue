@@ -179,7 +179,7 @@ export default defineComponent({
       videos,
       voteList,
       selected,
-      playingId
+      playingId,
     };
   },
 })
@@ -209,5 +209,9 @@ export default defineComponent({
   -ms-transform: translate(-50%, -50%);
   -webkit-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
+}
+
+:deep(.ant-card-head-title){
+  white-space: normal;
 }
 </style>
